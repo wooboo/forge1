@@ -4,9 +4,7 @@
   "bin": {
     "next-forge": "./scripts/init.js"
   },
-  "files": [
-    "scripts/init.js"
-  ],
+  "files": ["scripts/init.js"],
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev",
@@ -28,5 +26,23 @@
   "engines": {
     "node": ">=18"
   },
-  "packageManager": "pnpm@9.13.2"
+  "workspaces": ["apps/*", "packages/*"],
+  "packageManager": "pnpm@9.13.2",
+  "trustedDependencies": [
+    "@biomejs/biome",
+    "@clerk/shared",
+    "@parcel/watcher",
+    "@prisma/client",
+    "@prisma/engines",
+    "@sentry/cli",
+    "bufferutil",
+    "core-js",
+    "esbuild",
+    "prisma",
+    "sharp"
+  ],
+  "dependencies": {
+    "@libsql/client": "^0.14.0",
+    "database": "^0.0.2"
+  }
 }

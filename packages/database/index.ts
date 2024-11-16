@@ -1,18 +1,9 @@
 import 'server-only';
 
-import { Pool, neonConfig } from '@neondatabase/serverless';
-import { PrismaNeon } from '@prisma/adapter-neon';
-import { PrismaClient } from '@prisma/client';
+import { neon } from '@neondatabase/serverless';
 import { env } from '@repo/env';
-import ws from 'ws';
+import { drizzle } from 'drizzle-orm/neon-http';
 
-neonConfig.webSocketConstructor = ws;
+const client = neon(env.DATABASE_URL);
 
-declare global {
-  var cachedPrisma: PrismaClient | undefined;
-}
-
-const pool = new Pool({ connectionString: env.DATABASE_URL });
-const adapter = new PrismaNeon(pool);
-
-export const database = new PrismaClient({ adapter });
+export const database = drizzle({ client });

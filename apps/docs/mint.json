@@ -1,85 +1,121 @@
 {
   "$schema": "https://mintlify.com/schema.json",
-  "name": "Starter Kit",
+
+  "name": "next-forge docs",
+
   "logo": {
-    "dark": "/logo/dark.svg",
-    "light": "/logo/light.svg"
+    "dark": "/images/logo-dark.svg",
+    "light": "/images/logo-light.svg"
   },
-  "favicon": "/favicon.svg",
+
+  "background": { "style": "windows" },
+
+  "codeBlock": {
+    "mode": "auto"
+  },
+
+  "favicon": "/images/icon.png",
+
+  "layout": "topnav",
+
   "colors": {
-    "primary": "#0D9373",
-    "light": "#07C983",
-    "dark": "#0D9373",
+    "primary": "#f35815",
+    "light": "#f35815",
+    "dark": "#f35815",
     "anchors": {
-      "from": "#0D9373",
-      "to": "#07C983"
+      "from": "#f35815",
+      "to": "#f35815"
     }
   },
-  "topbarLinks": [
-    {
-      "name": "Support",
-      "url": "mailto:support@mintlify.com"
-    }
-  ],
+
   "topbarCtaButton": {
-    "name": "Dashboard",
-    "url": "https://dashboard.mintlify.com"
+    "type": "github",
+    "url": "https://github.com/haydenbleasel/next-forge"
   },
-  "tabs": [
-    {
-      "name": "API Reference",
-      "url": "api-reference"
-    }
-  ],
-  "anchors": [
-    {
-      "name": "Documentation",
-      "icon": "book-open-cover",
-      "url": "https://mintlify.com/docs"
-    },
-    {
-      "name": "Community",
-      "icon": "slack",
-      "url": "https://mintlify.com/community"
-    },
-    {
-      "name": "Blog",
-      "icon": "newspaper",
-      "url": "https://mintlify.com/blog"
-    }
-  ],
+
+  "search": {
+    "prompt": "Search or ask..."
+  },
+
   "navigation": [
     {
-      "group": "Get Started",
-      "pages": ["introduction", "quickstart", "development"]
+      "group": "Getting Started",
+      "pages": ["overview", "setup", "deploying", "faq"]
     },
     {
-      "group": "Essentials",
+      "group": "Structure",
+      "pages": ["structure/apps", "structure/packages"]
+    },
+    {
+      "group": "Features",
       "pages": [
-        "essentials/markdown",
-        "essentials/code",
-        "essentials/images",
-        "essentials/settings",
-        "essentials/navigation",
-        "essentials/reusable-snippets"
-      ]
-    },
-    {
-      "group": "API Documentation",
-      "pages": ["api-reference/introduction"]
-    },
-    {
-      "group": "Endpoint Examples",
-      "pages": [
-        "api-reference/endpoint/get",
-        "api-reference/endpoint/create",
-        "api-reference/endpoint/delete"
+        {
+          "group": "Analytics",
+          "pages": ["analytics/web", "analytics/product"]
+        },
+        "authentication",
+        "blog",
+        "bundle-analysis",
+        "cron",
+        {
+          "group": "Database and ORM",
+          "pages": [
+            "database/overview",
+            "database/drizzle",
+            "database/planetscale",
+            "database/prisma-postgres",
+            "database/turso"
+          ]
+        },
+        {
+          "group": "Design System",
+          "pages": [
+            "design-system/colors",
+            "design-system/components",
+            "design-system/dark-mode",
+            "design-system/provider",
+            "design-system/typography"
+          ]
+        },
+        "documentation",
+        {
+          "group": "Email",
+          "pages": ["email/clerk", "email/resend"]
+        },
+        "env",
+        "flags",
+        "formatting",
+        {
+          "group": "Observability",
+          "pages": [
+            "observability/error-capture",
+            "observability/debugging",
+            "observability/logging",
+            "observability/uptime"
+          ]
+        },
+        "payments",
+        {
+          "group": "Security",
+          "pages": [
+            "security/application",
+            "security/dependencies",
+            "security/ip-geolocation"
+          ]
+        },
+        "webhooks",
+        {
+          "group": "SEO",
+          "pages": ["seo/metadata", "seo/json-ld", "seo/sitemap"]
+        },
+        "testing"
       ]
     }
   ],
+
   "footerSocials": {
-    "x": "https://x.com/mintlify",
-    "github": "https://github.com/mintlify",
-    "linkedin": "https://www.linkedin.com/company/mintlify"
+    "x": "https://x.com/haydenbleasel",
+    "github": "https://github.com/haydenbleasel/next-forge",
+    "linkedin": "https://www.linkedin.com/in/haydenbleasel"
   }
 }
