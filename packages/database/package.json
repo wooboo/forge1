@@ -1,6 +1,7 @@
 {
   "name": "@repo/database",
   "version": "0.0.0",
+  "type": "module",
   "main": "./index.ts",
   "types": "./index.ts",
   "scripts": {
@@ -8,12 +9,9 @@
   },
   "dependencies": {
     "@libsql/client": "^0.14.0",
-    "@neondatabase/serverless": "^0.10.3",
     "@repo/env": "workspace:*",
     "drizzle-orm": "^0.36.3",
-    "server-only": "^0.0.1",
-    "undici": "^6.21.0",
-    "ws": "^8.18.0"
+    "server-only": "^0.0.1"
   },
   "devDependencies": {
     "@repo/typescript-config": "workspace:*",

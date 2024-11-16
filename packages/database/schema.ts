@@ -1,11 +1,8 @@
-import { pgSchema, serial, text } from 'drizzle-orm/pg-core';
+import { text } from 'drizzle-orm/sqlite-core';
+import { integer, sqliteTable } from 'drizzle-orm/sqlite-core';
 
-export const mySchema = pgSchema('my_schema');
-
-export const colors = mySchema.enum('colors', ['red', 'green', 'blue']);
-
-export const mySchemaUsers = mySchema.table('users', {
-  id: serial('id').primaryKey(),
+export const page = sqliteTable('page', {
+  id: integer('id').primaryKey(),
+  email: text('email').unique(),
   name: text('name'),
-  color: colors('color').default('red'),
 });

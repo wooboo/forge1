@@ -1,9 +1,14 @@
 import 'server-only';
 
-import { neon } from '@neondatabase/serverless';
 import { env } from '@repo/env';
-import { drizzle } from 'drizzle-orm/neon-http';
+import { drizzle } from 'drizzle-orm/libsql';
+import * as schema from './schema';
+export * as schema from './schema';
 
-const client = neon(env.DATABASE_URL);
-
-export const database = drizzle({ client });
+export const database = drizzle({
+  connection: {
+    url: env.DATABASE_URL,
+    authToken: env.DATABASE_AUTH_TOKEN,
+  },
+  schema,
+});
