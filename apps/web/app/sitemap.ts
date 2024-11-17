@@ -1,7 +1,7 @@
 // biome-ignore lint/correctness/noNodejsModules: Generates sitemap on Node.js
 import fs from 'node:fs';
-import { env } from '@repo/env';
 import type { MetadataRoute } from 'next';
+import { env } from '../env';
 
 const appFolders = fs.readdirSync('app', { withFileTypes: true });
 const pages = appFolders

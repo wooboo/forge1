@@ -1,6 +1,6 @@
-import { env } from '@repo/env';
 import { Status } from '@repo/observability/status';
 import Link from 'next/link';
+import { env } from '../../env';
 
 export const Footer = () => {
   const navigationItems = [

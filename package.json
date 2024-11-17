@@ -2,6 +2,11 @@
   "name": "next-forge",
   "version": "2.15.4",
   "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "lint": "turbo run lint",
+    "test": "turbo run test",
+    "analyze": "turbo run analyze",
     "bump-deps": "npx npm-check-updates --deep -u -x react-day-picker && pnpm install",
     "migrate": "cd packages/database && npx prisma format && npx prisma generate && npx prisma db push"
   },
@@ -18,7 +23,7 @@
     "node": ">=18"
   },
   "workspaces": ["apps/*", "packages/*"],
-  "packageManager": "pnpm@9.13.2",
+  "packageManager": "bun@1.1.33",
   "trustedDependencies": [
     "@biomejs/biome",
     "@clerk/shared",

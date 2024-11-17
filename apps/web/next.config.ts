@@ -1,7 +1,7 @@
 import { withContentCollections } from '@content-collections/next';
-import { env } from '@repo/env';
 import { config, withAnalyzer, withSentry } from '@repo/next-config';
 import type { NextConfig } from 'next';
+import { env } from './env';
 
 let nextConfig: NextConfig = { ...config };
 

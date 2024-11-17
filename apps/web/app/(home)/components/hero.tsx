@@ -1,8 +1,8 @@
 import { Button } from '@repo/design-system/components/ui/button';
-import { env } from '@repo/env';
 import { allPosts } from 'content-collections';
 import { MoveRight, PhoneCall } from 'lucide-react';
 import Link from 'next/link';
+import { env } from '../../../env';
 
 export const Hero = () => (
   <div className="w-full">

@@ -1,7 +1,6 @@
 import { Mdx } from '@/components/mdx';
 import { Sidebar } from '@/components/sidebar';
 import { ArrowLeftIcon } from '@radix-ui/react-icons';
-import { env } from '@repo/env';
 import { type BlogPosting, JsonLd, type WithContext } from '@repo/seo/json-ld';
 import { createMetadata } from '@repo/seo/metadata';
 import { allPosts } from 'content-collections';
@@ -10,6 +9,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import Balancer from 'react-wrap-balancer';
+import { env } from '../../../env';
 
 type BlogPostProperties = {
   readonly params: Promise<{

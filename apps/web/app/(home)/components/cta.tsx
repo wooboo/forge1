@@ -1,7 +1,7 @@
 import { Button } from '@repo/design-system/components/ui/button';
-import { env } from '@repo/env';
 import { MoveRight, PhoneCall } from 'lucide-react';
 import Link from 'next/link';
+import { env } from '../../../env';
 
 export const CTA = () => (
   <div className="w-full py-20 lg:py-40">

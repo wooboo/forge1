@@ -1,12 +1,12 @@
 import { clerkClient } from '@clerk/nextjs/server';
 import { analytics } from '@repo/analytics/posthog/server';
-import { env } from '@repo/env';
 import { parseError } from '@repo/observability/error';
 import { log } from '@repo/observability/log';
 import { stripe } from '@repo/payments';
 import type { Stripe } from '@repo/payments';
 import { headers } from 'next/headers';
 import { NextResponse } from 'next/server';
+import { env } from '../../../env';
 
 const getUserFromCustomerId = async (customerId: string) => {
   const clerk = await clerkClient();
