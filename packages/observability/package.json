@@ -6,7 +6,9 @@
     "@logtail/next": "^0.1.6",
     "@repo/env": "workspace:*",
     "@sentry/nextjs": "^8.38.0",
-    "react": "^18.3.1"
+    "react": "^18.3.1",
+    "@t3-oss/env-nextjs": "^0.11.1",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@repo/typescript-config": "workspace:*",

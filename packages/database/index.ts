@@ -1,7 +1,7 @@
 import 'server-only';
 
-import { env } from '@repo/env';
 import { drizzle } from 'drizzle-orm/libsql';
+import { env } from './env';
 import * as schema from './schema';
 export * as schema from './schema';
 

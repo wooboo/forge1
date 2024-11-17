@@ -1,17 +1,22 @@
 {
   "name": "@repo/database",
   "version": "0.0.0",
-  "type": "module",
   "main": "./index.ts",
   "types": "./index.ts",
   "scripts": {
-    "build": "prisma generate --no-hints"
+    "db:push": "drizzle-kit push",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "db:pull": "drizzle-kit pull",
+    "db:up": "drizzle-kit up"
   },
   "dependencies": {
+    "@t3-oss/env-nextjs": "^0.11.1",
     "@libsql/client": "^0.14.0",
     "@repo/env": "workspace:*",
     "drizzle-orm": "^0.36.3",
-    "server-only": "^0.0.1"
+    "server-only": "^0.0.1",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@repo/typescript-config": "workspace:*",

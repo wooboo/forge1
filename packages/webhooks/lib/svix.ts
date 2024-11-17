@@ -1,11 +1,14 @@
 import 'server-only';
 import { auth } from '@clerk/nextjs/server';
-import { env } from '@repo/env';
 import { Svix } from 'svix';
+import { env } from '../env';
 
 const svix = new Svix(env.SVIX_TOKEN);
 
-export const send = async (eventType: string, payload: any) => {
+export const send = async (
+  eventType: string,
+  payload: Record<string, unknown>
+) => {
   const { orgId } = await auth();
 
   if (!orgId) {

@@ -1,6 +1,6 @@
 import { createRequire } from 'node:module';
-import { env } from '@repo/env';
 import { defineConfig } from 'drizzle-kit';
+import { env } from './env';
 
 const require = createRequire(import.meta.url);
 export default defineConfig({

@@ -6,7 +6,7 @@ import type {
   WebhookEvent,
 } from '@clerk/nextjs/server';
 import { analytics } from '@repo/analytics/posthog/server';
-import { env } from '@repo/env';
+import { env } from '@repo/auth/env';
 import { log } from '@repo/observability/log';
 import { headers } from 'next/headers';
 import { Webhook } from 'svix';

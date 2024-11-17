@@ -1,5 +1,5 @@
-import { env } from '@repo/env';
 import type { ReactNode } from 'react';
+import { env } from './env';
 import { GoogleAnalytics } from './google';
 import { PostHogProvider } from './posthog/client';
 import { VercelAnalytics } from './vercel';
