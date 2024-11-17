@@ -36,10 +36,10 @@ export async function seed(db: Database) {
   // Clear existing data
   await clear(db);
 
-  seedProperties(db);
-  seedOwnership(db);
-  seedTenants(db);
-  seedAgreements(db);
+  await seedProperties(db);
+  await seedOwnership(db);
+  await seedTenants(db);
+  await seedAgreements(db);
 
   console.log('✅ Database seeding completed successfully');
 }

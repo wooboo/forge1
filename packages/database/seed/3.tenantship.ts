@@ -1,6 +1,4 @@
 import type { Database } from '../index';
-
-import { createId } from '../ids';
 import { tenant } from '../schema';
 
 export default async function seed(db: Database) {
@@ -10,7 +8,7 @@ export default async function seed(db: Database) {
     .insert(tenant)
     .values([
       {
-        id: createId('TNT'),
+        id: 'TNT-0-AJ',
         name: 'Agnieszka Javaheri ...',
         street: '...',
         zip: '01-460',

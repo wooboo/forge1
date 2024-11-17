@@ -23,6 +23,9 @@ export const metadata: Metadata = {
 
 const App = async () => {
   const user = await currentUser();
+  if (!user) {
+    return null;
+  }
 
   const owners = await database.query.owner.findMany({
     where: (fields, { eq }) => eq(fields.userId, user.id),
@@ -33,23 +36,23 @@ const App = async () => {
       return await database.query.propertyOwnership.findMany({
         where: (fields, { eq }) => eq(fields.ownerId, owner.id),
         with: {
-          building: true,
-          apartment: true,
+          property: true,
+          premises: true,
         },
       });
     })
   );
   const ownedBuildings = propertyOwnerships
     .flat()
-    .filter((ownership) => ownership.building)
-    .map((ownership) => ownership.building);
+    .map((ownership) => ownership.property)
+    .filter(Boolean);
 
   const ownedApartments = propertyOwnerships
     .flat()
-    .filter((ownership) => ownership.apartment)
+    .filter((ownership) => ownership.premises)
     .map((ownership) => ({
-      ...ownership.apartment,
-      building: ownership.building,
+      ...ownership.premises,
+      property: ownership.property,
     }));
   return (
     <>
@@ -95,7 +98,7 @@ const App = async () => {
               className="aspect-video rounded-xl bg-muted/50 p-4"
             >
               <h3 className="font-bold">{apartment?.name}</h3>
-              <p>Building: {apartment?.building?.name}</p>
+              <p>Building: {apartment?.property?.name}</p>
               <p>{apartment.area} m²</p>
             </div>
           ))}
