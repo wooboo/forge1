@@ -1,12 +1,12 @@
 import type { Database } from './index';
 import {
   agreement,
-  apartment,
-  building,
   document,
   documentUtility,
   lease,
   owner,
+  premises,
+  property,
   propertyOwnership,
   tenant,
 } from './schema';
@@ -25,8 +25,8 @@ export async function clear(db: Database) {
   await db.delete(propertyOwnership);
   await db.delete(tenant);
   await db.delete(owner);
-  await db.delete(apartment);
-  await db.delete(building);
+  await db.delete(premises);
+  await db.delete(property);
   console.log('✨ Database cleared successfully');
 }
 

@@ -2,7 +2,7 @@ import { type InferInsertModel, relations } from 'drizzle-orm';
 import { real, text } from 'drizzle-orm/sqlite-core';
 import { integer, sqliteTable } from 'drizzle-orm/sqlite-core';
 
-export const building = sqliteTable('building', {
+export const property = sqliteTable('property', {
   id: text('id').primaryKey(),
   name: text('name').notNull(),
   address: text('address').notNull(),
@@ -11,12 +11,12 @@ export const building = sqliteTable('building', {
   area: real('area'), // in square meters/feet
 });
 
-export const apartment = sqliteTable('apartment', {
+export const premises = sqliteTable('premises', {
   id: text('id').primaryKey(),
   name: text('name').notNull(),
-  buildingId: text('building_id')
+  propertyId: text('property_id')
     .notNull()
-    .references(() => building.id),
+    .references(() => property.id),
   area: real('area'), // in square meters/feet
 });
 
@@ -31,8 +31,8 @@ export const owner = sqliteTable('owner', {
 
 export const propertyOwnership = sqliteTable('property_ownership', {
   id: text('id').primaryKey(),
-  buildingId: text('building_id').references(() => building.id),
-  apartmentId: text('apartment_id').references(() => apartment.id),
+  propertyId: text('property_id').references(() => property.id),
+  premisesId: text('premises_id').references(() => premises.id),
   ownerId: text('owner_id')
     .notNull()
     .references(() => owner.id),
@@ -57,8 +57,8 @@ export const tenant = sqliteTable('tenant', {
 
 export const lease = sqliteTable('lease', {
   id: text('id').primaryKey(),
-  buildingId: text('building_id').references(() => building.id),
-  apartmentId: text('apartment_id').references(() => apartment.id),
+  propertyId: text('property_id').references(() => property.id),
+  premisesId: text('premises_id').references(() => premises.id),
   tenantId: text('tenant_id')
     .notNull()
     .references(() => tenant.id),
@@ -77,10 +77,10 @@ export const agreement = sqliteTable('agreement', {
   tenantId: text('tenant_id')
     .notNull()
     .references(() => tenant.id),
-  buildingId: text('building_id')
+  propertyId: text('property_id')
     .notNull()
-    .references(() => building.id),
-  apartmentId: text('apartment_id').references(() => apartment.id),
+    .references(() => property.id),
+  premisesId: text('premises_id').references(() => premises.id),
   dueDate: integer('due_date').notNull(),
   deposit: integer('deposit').notNull(),
   baseRent: integer('base_rent').notNull(),
@@ -114,8 +114,8 @@ export const documentUtility = sqliteTable('document_utility', {
 });
 
 // Type exports for inserts
-export type InsertBuilding = InferInsertModel<typeof building>;
-export type InsertApartment = InferInsertModel<typeof apartment>;
+export type InsertProperty = InferInsertModel<typeof property>;
+export type InsertPremises = InferInsertModel<typeof premises>;
 export type InsertOwner = InferInsertModel<typeof owner>;
 export type InsertPropertyOwnership = InferInsertModel<
   typeof propertyOwnership
@@ -126,18 +126,18 @@ export type InsertAgreement = InferInsertModel<typeof agreement>;
 export type InsertDocument = InferInsertModel<typeof document>;
 export type InsertDocumentUtility = InferInsertModel<typeof documentUtility>;
 
-// Building relations
-export const buildingRelations = relations(building, ({ many }) => ({
-  apartments: many(apartment),
+// Property relations
+export const propertyRelations = relations(property, ({ many }) => ({
+  premises: many(premises),
   propertyOwnerships: many(propertyOwnership),
   leases: many(lease),
 }));
 
-// Apartment relations
-export const apartmentRelations = relations(apartment, ({ one, many }) => ({
-  building: one(building, {
-    fields: [apartment.buildingId],
-    references: [building.id],
+// Premises relations
+export const premisesRelations = relations(premises, ({ one, many }) => ({
+  property: one(property, {
+    fields: [premises.propertyId],
+    references: [property.id],
   }),
   propertyOwnerships: many(propertyOwnership),
   leases: many(lease),
@@ -152,13 +152,13 @@ export const ownerRelations = relations(owner, ({ many }) => ({
 export const propertyOwnershipRelations = relations(
   propertyOwnership,
   ({ one }) => ({
-    building: one(building, {
-      fields: [propertyOwnership.buildingId],
-      references: [building.id],
+    property: one(property, {
+      fields: [propertyOwnership.propertyId],
+      references: [property.id],
     }),
-    apartment: one(apartment, {
-      fields: [propertyOwnership.apartmentId],
-      references: [apartment.id],
+    premises: one(premises, {
+      fields: [propertyOwnership.premisesId],
+      references: [premises.id],
     }),
     owner: one(owner, {
       fields: [propertyOwnership.ownerId],
@@ -174,13 +174,13 @@ export const tenantRelations = relations(tenant, ({ many }) => ({
 
 // Lease relations
 export const leaseRelations = relations(lease, ({ one }) => ({
-  building: one(building, {
-    fields: [lease.buildingId],
-    references: [building.id],
+  property: one(property, {
+    fields: [lease.propertyId],
+    references: [property.id],
   }),
-  apartment: one(apartment, {
-    fields: [lease.apartmentId],
-    references: [apartment.id],
+  premises: one(premises, {
+    fields: [lease.premisesId],
+    references: [premises.id],
   }),
   tenant: one(tenant, {
     fields: [lease.tenantId],
@@ -194,13 +194,13 @@ export const agreementRelations = relations(agreement, ({ one, many }) => ({
     fields: [agreement.tenantId],
     references: [tenant.id],
   }),
-  building: one(building, {
-    fields: [agreement.buildingId],
-    references: [building.id],
+  property: one(property, {
+    fields: [agreement.propertyId],
+    references: [property.id],
   }),
-  apartment: one(apartment, {
-    fields: [agreement.apartmentId],
-    references: [apartment.id],
+  premises: one(premises, {
+    fields: [agreement.premisesId],
+    references: [premises.id],
   }),
   documents: many(document),
 }));

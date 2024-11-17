@@ -18,8 +18,8 @@ export default async function seed(db: Database) {
       startDate: parseDate('01/07/2012'),
       endDate: parseDate('30/09/2013'),
       tenantId: 'TNT-0-AJ', // Get the last inserted tenant
-      buildingId: 'BLD-0-KPS7', // From YAML
-      apartmentId: 'APT-0-KPS7A', // From YAML
+      propertyId: 'PRP-0-KPS7', // From YAML
+      premisesId: 'PRM-0-KPS7A', // From YAML
       dueDate: 10,
       deposit: 11070,
       baseRent: 3000,
