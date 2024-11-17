@@ -1,16 +1,7 @@
 {
   "name": "next-forge",
   "version": "2.15.4",
-  "bin": {
-    "next-forge": "./scripts/init.js"
-  },
-  "files": ["scripts/init.js"],
   "scripts": {
-    "build": "turbo build",
-    "dev": "turbo dev",
-    "lint": "turbo lint",
-    "test": "turbo test",
-    "analyze": "turbo analyze",
     "bump-deps": "npx npm-check-updates --deep -u -x react-day-picker && pnpm install",
     "migrate": "cd packages/database && npx prisma format && npx prisma generate && npx prisma db push"
   },
@@ -40,9 +31,5 @@
     "esbuild",
     "prisma",
     "sharp"
-  ],
-  "dependencies": {
-    "@libsql/client": "^0.14.0",
-    "database": "^0.0.2"
-  }
+  ]
 }
