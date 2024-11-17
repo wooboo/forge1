@@ -1,5 +1,6 @@
+import { currentUser } from '@clerk/nextjs/server';
+
 import { database } from '@repo/database';
-import { page } from '@repo/database/schema';
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -21,8 +22,35 @@ export const metadata: Metadata = {
 };
 
 const App = async () => {
-  const pages = await database.select().from(page);
+  const user = await currentUser();
 
+  const owners = await database.query.owner.findMany({
+    where: (fields, { eq }) => eq(fields.userId, user.id),
+  });
+
+  const propertyOwnerships = await Promise.all(
+    owners.map(async (owner) => {
+      return await database.query.propertyOwnership.findMany({
+        where: (fields, { eq }) => eq(fields.ownerId, owner.id),
+        with: {
+          building: true,
+          apartment: true,
+        },
+      });
+    })
+  );
+  const ownedBuildings = propertyOwnerships
+    .flat()
+    .filter((ownership) => ownership.building)
+    .map((ownership) => ownership.building);
+
+  const ownedApartments = propertyOwnerships
+    .flat()
+    .filter((ownership) => ownership.apartment)
+    .map((ownership) => ({
+      ...ownership.apartment,
+      building: ownership.building,
+    }));
   return (
     <>
       <header className="flex h-16 shrink-0 items-center gap-2">
@@ -45,14 +73,33 @@ const App = async () => {
         </div>
       </header>
       <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
+        <h2 className="text-2xl font-bold">My Buildings</h2>
         <div className="grid auto-rows-min gap-4 md:grid-cols-3">
-          {pages.map((page) => (
-            <div key={page.id} className="aspect-video rounded-xl bg-muted/50">
-              {page.name}
+          {ownedBuildings.map((building) => (
+            <div
+              key={building.id}
+              className="aspect-video rounded-xl bg-muted/50 p-4"
+            >
+              <h3 className="font-bold">{building.name}</h3>
+              <p>{building.address}</p>
+              <p>{building.area} m²</p>
             </div>
           ))}
         </div>
-        <div className="min-h-[100vh] flex-1 rounded-xl bg-muted/50 md:min-h-min" />
+
+        <h2 className="text-2xl font-bold mt-8">My Apartments</h2>
+        <div className="grid auto-rows-min gap-4 md:grid-cols-3">
+          {ownedApartments.map((apartment) => (
+            <div
+              key={apartment.id}
+              className="aspect-video rounded-xl bg-muted/50 p-4"
+            >
+              <h3 className="font-bold">{apartment?.name}</h3>
+              <p>Building: {apartment?.building?.name}</p>
+              <p>{apartment.area} m²</p>
+            </div>
+          ))}
+        </div>
       </div>
     </>
   );

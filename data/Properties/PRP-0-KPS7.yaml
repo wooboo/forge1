@@ -1,0 +1,30 @@
+name: Plac Szczepański 7 xxx
+address:
+  street: Plac Szczepański 7x
+  zip: 31-011
+  city: Kraków
+owners:
+- owners:
+  - id: OWN-0-ADC
+    name: Anna Dańkowska-Cichy
+  fraction: 25/100
+- owners:
+  - id: OWN-0-AS
+    name: Anna Suchodolska
+  fraction: 6/100
+- owners:
+  - id: OWN-0-BR
+    name: Bożena Rogoźnicka
+  fraction: 16/100
+- owners:
+  - id: OWN-0-EO
+    name: Ewa Orłowska
+  fraction: 25/100
+- owners:
+  - id: OWN-0-MZR
+    name: Małgosia Żabówka-Rogoźnicka
+  fraction: 6/100
+- owners:
+  - id: OWN-0-TW
+    name: Tomek Wierzbicki
+  fraction: 22/100

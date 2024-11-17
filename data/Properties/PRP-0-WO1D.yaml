@@ -1,0 +1,10 @@
+id: PRP-0-WO1D
+name: Obrzeżna 1D
+address:
+  street: Obrzeżna 1D
+  zip: 00-000
+  city: Warszawa
+owners:
+- owners:
+  - OWN-0-PZ
+  fraction: 1/1

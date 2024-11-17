@@ -1,0 +1,10 @@
+id: PRM-0-WO1D177
+name: 177
+property:
+  id: PRP-0-WO1D
+  name: Obrzeżna 1D
+owners:
+- owners:
+  - id: OWN-0-PZ
+    name: Piotr Żabówka
+  fraction: 1/1

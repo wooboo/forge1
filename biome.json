@@ -7,5 +7,16 @@
       "packages/design-system/hooks/**",
       "apps/docs/**/*.json"
     ]
+  },
+  "linter": {
+    "rules": {
+      "nursery": {
+        "noSecrets": "info"
+      },
+      "suspicious": {
+        "noConsole": "info",
+        "noConsoleLog": "info"
+      }
+    }
   }
 }

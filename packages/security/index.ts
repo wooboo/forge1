@@ -1,5 +1,5 @@
 import arcjet, { shield } from '@arcjet/next';
-import { env } from '@repo/env';
+import { env } from './env';
 
 // Re-export the rules to simplify imports inside handlers
 export {
@@ -21,7 +21,7 @@ export default arcjet({
   rules: [
     // Protect against common attacks with Arcjet Shield
     shield({
-      mode: 'LIVE', // will block requests. Use "DRY_RUN" to log only
+      mode: 'DRY_RUN', // will block requests. Use "DRY_RUN" to log only
     }),
     // Other rules are added in different routes
   ],

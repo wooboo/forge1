@@ -1,0 +1,47 @@
+id: AGR-0-KPS7A-02-2012
+number: 02/lokal A/2012
+date: 27/06/2012
+start: 01/07/2012
+end: 30/09/2013
+tenant:
+  name: Agnieszka Javaheri ...
+  address:
+    street: ...
+    zip: 01-460
+    city: Warszawa
+  nip: null
+  regon: null
+  pesel: null
+property:
+  id: PRP-0-KPS7
+  name: Plac Szczepański 7
+premises:
+- id: PRM-0-KPS7A
+  name: A
+dueDate: 10
+kaucja: 11070
+baseRent: 3000
+indexation: true
+documents:
+- type: umowa
+  number: 02/lokal A/2012
+  date: 27/06/2012
+  start: 01/07/2012
+  end: 30/09/2013
+  dueDate: 10
+  kaucja: 11070
+  baseRent: 3000
+  indexation: true
+- type: aneks
+  number: 1
+  date: 01/08/2013
+  description: wywóz odpadów
+  utilities:
+  - monthly: 63
+    type: odpady
+- type: aneks
+  number: 2
+  date: 01/09/2013
+  description: przedłużenie
+  start: 01/10/2013
+  end: 30/09/2015

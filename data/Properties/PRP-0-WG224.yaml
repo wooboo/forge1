@@ -1,0 +1,13 @@
+id: PRP-0-WG224
+name: Górczewska 224
+address:
+  street: Górczewska 224
+  zip: 01-460
+  city: Warszawa
+owners:
+- owners:
+  - id: OWN-0-PZ
+    name: Piotr Żabówka
+  - id: OWN-0-MZR
+    name: Małgosia Żabówka-Rogoźnicka
+  fraction: 1/1

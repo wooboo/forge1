@@ -1,0 +1,12 @@
+id: PRM-0-WG224417
+name: 417
+property:
+  id: PRP-0-WG224
+  name: Górczewska 224
+owners:
+- owners:
+  - id: OWN-0-PZ
+    name: Piotr Żabówka
+  - id: OWN-0-MZR
+    name: Małgorzata Żabówka-Rogoźnicka
+  fraction: 1/1
